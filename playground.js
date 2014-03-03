@@ -1,12 +1,7 @@
 function plus(a,b){
-    console.log(arguments);
-    return arguments[0] + arguments[1];
+    return a + b;
 }
-console.log(plus(5,3));
 
-function howMany() {
-    return arguments['length'];
-}
-console.log("How Many:");
-console.log(howMany());
-console.log(howMany(3,4,2));
+console.log(plus(2,3));
+console.log(plus.call(this, 2,3));
+console.log(plus.apply(this,[2,6]));
