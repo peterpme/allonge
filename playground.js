@@ -1,4 +1,24 @@
-// concat 
+var __slice = Array.prototype.slice;
 
-var con = [1,2,3].concat([2,1]);
-console.log(con);
+function callFirst(fn, larg){
+    return function(){
+        var args = __slice.call(arguments,0);
+        
+        return fn.apply(this, [larg].concat(args));
+    }
+}
+
+function callLast(fn, rarg){
+    return function() {
+        var args = __slice.call(arguments,0);
+        
+        return fn.apply(this, args.concat([rarg]));
+    }
+}
+
+function greet (me, you){
+    return "Hello, " + you + ", my name is " + me;
+}
+
+var heliosSayHello = callFirst(greet, 'Helios');
+console.log(heliosSayHello);
