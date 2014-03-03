@@ -1,7 +1,11 @@
-function plus(a,b){
-    return a + b;
-}
+var slice1 = [1,2,3,4,5].slice(0);
+// slice up to element 0 (slices nothing)
+console.log(slice1);
 
-console.log(plus(2,3));
-console.log(plus.call(this, 2,3));
-console.log(plus.apply(this,[2,6]));
+var slice2 = [1,2,3,4,5].slice(1);
+// slice up to the second element (2,3,4,5)
+console.log(slice2);
+
+var slice3 = [1,2,3,4,5].slice(1,4);
+//slice from the 2nd element up to the 4th element (2,3,4)
+console.log(slice3);
