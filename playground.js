@@ -1,5 +1,8 @@
-function butFirst() {
-    return Array.prototype.slice.call(arguments,1,3);
-}
+// bound to local variable for speed improvement 
 
-console.log(butFirst('a', 'b','c','d'));
+var __slice = Array.prototype.slice;
+
+function butFirst() {
+    return __slice.call(arguments,2);
+}
+console.log(butFirst('a','b','c','d'));
