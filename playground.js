@@ -1,8 +1,4 @@
-// bound to local variable for speed improvement 
+// concat 
 
-var __slice = Array.prototype.slice;
-
-function butFirst() {
-    return __slice.call(arguments,2);
-}
-console.log(butFirst('a','b','c','d'));
+var con = [1,2,3].concat([2,1]);
+console.log(con);
