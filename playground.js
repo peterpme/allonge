@@ -3,7 +3,7 @@ var __slice = Array.prototype.slice;
 function callFirst(fn, larg){
     return function(){
         var args = __slice.call(arguments,0);
-        
+        console.log(args);
         return fn.apply(this, [larg].concat(args));
     }
 }
