@@ -20,6 +20,6 @@ function greet (me, you){
     return "Hello, " + you + ", my name is " + me;
 }
 
-var heliosSayHello = callFirst(greet, 'Helios');
-var jason = heliosSayHello("Jason");
-console.log(jason);
+var peterSaysHello = callLast(greet, "jeff");
+var peter = peterSaysHello('peter');
+console.log(peter);
