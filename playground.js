@@ -21,4 +21,5 @@ function greet (me, you){
 }
 
 var heliosSayHello = callFirst(greet, 'Helios');
-console.log(heliosSayHello);
+var jason = heliosSayHello("Jason");
+console.log(jason);
