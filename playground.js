@@ -1,5 +1,4 @@
 var __slice = Array.prototype.slice;
-
 function callFirst(fn, larg){
     return function(){
         var args = __slice.call(arguments,0);
@@ -19,7 +18,6 @@ function callLast(fn, rarg){
 function greet (me, you){
     return "Hello, " + you + ", my name is " + me;
 }
-
 var peterSaysHello = callLast(greet, "jeff");
-var peter = peterSaysHello('peter');
+var peter = peterSaysHello('peter','tom','alex',function(x){return x*x});
 console.log(peter);
