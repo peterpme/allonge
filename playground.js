@@ -1,18 +1,13 @@
-function compose(a,b){
-    return function(c){
-    return a(b(c));
+function not(fn){
+    return function(argument){
+        return !fn(argument);
     };
 }
 
-
-function addThis(x){
-    return x+x;
+function something(x){
+    return x != null;
 }
-
-function multThis(x){
-    return x*x;
-}
-
-var comb = compose(addThis,multThis);
-var add = comb(5);
-console.log(add);
+var nothing = not(something);
+console.log(nothing);
+var ok = nothing(true);
+console.log(ok);
