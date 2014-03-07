@@ -1,54 +1,26 @@
-var nums = [1,4,9];
-var roots = nums.map(Math.sqrt);
-
-function squared(x){
-    return x*x;
-x}
-
-function added(x){
-    return x+x;
-}
-
-console.log(roots);
-
-function mapWith(fn){
-    return function(array){
-        return array.map(fn);
+String.prototype.repeat = function(count){
+    if (count===1){
+        return this;
+    }
+    else {
+        return this + this.repeat(count-1);
     }
 }
 
-var squareAll = mapWith(squared);
-var numArray = squareAll(nums);
-console.log(numArray);
+var Tom = "Tom";
 
-console.log("===========");
-function a(a){
-    console.log("1a: "+a);
-    return function(b){
-        console.log("1b: "+b);
-        console.log(arguments[0]+ " " + arguments[1]);
-        return function(c){
-            console.log("1c: " +c);
-            console.log(arguments[0] + " " + arguments[1]);
-            return a+b;
+console.log(Tom.repeat(5));
+
+String.prototype.repeat2 = (function(count){
+    var i=count;
+    return function(count){
+        i--;
+        
+        if (count===1){
+            return i + this;
         }
+        else
+            return i + this + this.repeat2(count-1);
     }
-}
-var b = a(5);
-var c = b(3,6);
-var d = c(2);
-console.log("a: " + a);
-console.log("b: " + b);
-console.log("c: " + c);
-console.log("d: " + d);
-console.log("====");
-var e = function(a){
-    return function(b){
-        return a+b;
-    }
-}
-var ee = e(5);
-var ff = ee(6);
-console.log("e:" +e);
-console.log("ee:" +ee);
-console.log("ff:" +ff);
+})(5);
+console.log(Tom.repeat2(5));
