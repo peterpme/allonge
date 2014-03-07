@@ -1,24 +1,18 @@
-var __slice = Array.prototype.slice;
-
-function callFirst(fn, larg){
-    return function(){
-        var args = __slice.call(arguments,0);
-        console.log(args);
-        return fn.apply(this, [larg].concat(args));
-    }
+function compose(a,b){
+    return function(c){
+    return a(b(c));
+    };
 }
 
-function callLast(fn, rarg){
-    return function() {
-        var args = __slice.call(arguments,0);
-        
-        return fn.apply(this, args.concat([rarg]));
-    }
+
+function addThis(x){
+    return x+x;
 }
 
-function greet (me, you){
-    return "Hello, " + you + ", my name is " + me;
+function multThis(x){
+    return x*x;
 }
-var peterSaysHello = callFirst(greet, "jeff");
-var peter = peterSaysHello('peter','tom','alex',function(x){return x*x});
-console.log(peter);
+
+var comb = compose(addThis,multThis);
+var add = comb(5);
+console.log(add);
