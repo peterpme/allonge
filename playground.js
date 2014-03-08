@@ -1,26 +1,10 @@
-String.prototype.repeat = function(count){
-    if (count===1){
-        return this;
-    }
-    else {
-        return this + this.repeat(count-1);
-    }
+// String.prototype.repeat = function(count){
+//     var that = this;
+//     return Array.apply(void 0, Array(count)).reduce(function(p,c,n){return (n === 0) ? that :  p + that;})
+// }
+
+String.prototype.repeat = function(count) {
+    return Array(count+1).join(this);
 }
 
-var Tom = "Tom";
-
-console.log(Tom.repeat(5));
-
-String.prototype.repeat2 = (function(count){
-    var i=count;
-    return function(count){
-        i--;
-        
-        if (count===1){
-            return i + this;
-        }
-        else
-            return i + this + this.repeat2(count-1);
-    }
-})(5);
-console.log(Tom.repeat2(5));
+console.log("Tom".repeat(5));
