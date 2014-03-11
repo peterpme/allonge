@@ -1,39 +1,29 @@
-var __slice = Array.prototype.slice; 
-
-function variadic(fn){
-    var fnLength = fn.length;
+var __slice = Array.prototype.slice;
+var variadic = function(fn){
+    var count = Math.max(fn.length-1,0);
     
-    if (fnLength !=1){
-        return fn;
-    }
-    else if(fnLength ===1){
-        return function(){
-            return fn.call(this, __slice.call(arguments,0));
-        }
-    }
-    else {
-        return function(){
-            var numberOfArgs = arguments.length,
-            namedArgs = __slice.call(arguments,0,fnLength-1),
-            numberOfMissingNamedArgs = Math.max(fnLength - numberOfArgs -1,0),
-            argPadding = new Array(numberOfMissingNamedArgs),
-            variadicArgs = __slice.call(arguments. fn.length-1);
-            
-            return fn.apply(this, namedArgs.concat(argPadding).concat([variadicArgs]));
-        }
-    }
+    return function() {
+        var args = __slice.call(arguments,0,count);
+        
+        args.length = count;
+        args.push(__slice.call(arguments,count));
+        
+        return fn.apply(this,args);
+    };
 };
 
-function unary(first){
-    return first;
-}
-console.log(unary('why', 'hello', 'there'));
+var fn = variadic(function(args){
+    return args;
+});
 
-console.log(variadic(unary)('why', 'hello', 'there'));
+console.log(fn());
+console.log(fn('a'));
+console.log(fn('a','b'));
 
-function binary(first, rest){
-    return [first,rest];
-}
-console.log(binary('why','hello','there'));
+var fn = variadic(function(a,b, args){
+    return { a:a,b:b, args:args};
+});
 
-console.log(variadic(binary)('why','hello','there'));
+console.log(fn());
+console.log(fn('a'));
+console.log(fn('a','b'));
