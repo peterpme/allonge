@@ -5,10 +5,12 @@ a.map(function(element,index,arr){
 });
 
 function unary(fn){
-    if(fn.length ==1){
+    if(fn.length == 1){
         return fn;
     }
     else return function(something){
         return fn.call(this,something);
     }
 }
+
+console.log(a.map(unary(parseInt)));
