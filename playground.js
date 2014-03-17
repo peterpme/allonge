@@ -1,13 +1,8 @@
-var unique = function() {
-    return function(){
-        
-    };
-}
-console.log(unique);
-
-console.log(unique()==unique());
-
-var x = unique(),
-y =x;
-
-console.log(x==y);
+var unique = function(){
+    return function() {}
+},
+x = unique(),
+y = unique(),
+z = unique();
+var a = [x,y,z];
+console.log(a[0]===x && a[1]===y && a[2]===z);
