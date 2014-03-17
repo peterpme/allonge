@@ -1,16 +1,17 @@
-var a = ['1','2','3','4','5','6'];
-
-a.map(function(element,index,arr){
-    console.log({element:element,index:index,arr:arr})
-});
-
-function unary(fn){
-    if(fn.length == 1){
-        return fn;
+function tap(value,fn){
+    if(fn === void 0){
+        return curried;
     }
-    else return function(something){
-        return fn.call(this,something);
+    else return curried(fn);
+    
+    function curried(fn){
+        if(typeof(fn) === 'function'){
+            fn(value);
+        }
+        return value;
     }
 }
 
-console.log(a.map(unary(parseInt)));
+var drink = tap('espresso')(function (it){
+    console.log("our drink is", it);
+})
