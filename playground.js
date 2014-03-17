@@ -1,4 +1,4 @@
-var a = ['1','2','3','4'];
+var a = ['1','2','3','4','5','6'];
 
 a.map(function(element,index,arr){
     console.log({element:element,index:index,arr:arr})
