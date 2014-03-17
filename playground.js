@@ -1,8 +1,8 @@
-var obj ={
-    year:2012,
-    month:6,
-    day:14
-}
-
-console.log(obj['day']);
-console.log(obj.day);
+var unique = function() {
+    return function() {}
+},
+x = unique(),
+y = unique(),
+z = unique(),
+o = { a:x,b:y, c:z};
+console.log(o['a'] === x && o['b'] === y && o['c']===z);
