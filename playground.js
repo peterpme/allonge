@@ -1,12 +1,18 @@
-function isSomething(value){
-    return value !== null && value !== void 0;
-}
-
-function checksForSomething(value){
-    if (isSomething(value)){
-        return value;
+function maybe(fn){
+    return function() {
+        var i;
+        
+        if (arguments.length === 0){
+            return
+        }
+        else {
+            for (i=0;i<arguments.length;++i){
+                if(arguments[i]== null) return;
+            }
+            return fn.apply(this,arguments);
+        }
     }
 }
-
-var something = checksForSomething(5);
-console.log(something); 
+var checksForSomething = maybe(function(value){
+    console.log(value);
+});
