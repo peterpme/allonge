@@ -1,12 +1,13 @@
-var x = 'June 14, 1962',
-    y=x;
+var unique = function() {
+    return function(){
+        
+    };
+}
+console.log(unique);
+
+console.log(unique()==unique());
+
+var x = unique(),
+y =x;
 
 console.log(x==y);
-
-var x = [2012,6,14],
-y=x;
-console.log(x==y);
-
-console.log((function (y){
-    return x==y;
-})(x));
