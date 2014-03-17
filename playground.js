@@ -1,20 +1,9 @@
-var oneTwoThree = [1,2,3];
-oneTwoThree[0] = 'one';
-oneTwoThree[3] = 'four';
-console.log(oneTwoThree);
+var allHallows =[2012,10,31];
+var halloween = allHallows;
+console.log(halloween===allHallows);
 
-var names = {
-    firstName: 'hi',
-    lastName: 'hello'
-};
+(function(halloween){
+    allHallows=[2013,10,31];
+    console.log(halloween);
+})(allHallows);
 
-names.middleName= 'err';
-console.log(names);
-
-
-var objs = {
-    a: {a:1,b:2},
-    b: {a:3,b:4},
-    c:'hello'
-};
-console.log(objs);
