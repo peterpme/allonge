@@ -1,9 +1,17 @@
-var allHallows =[2012,10,31];
-var halloween = allHallows;
-console.log(halloween===allHallows);
+var words = 'cat cat cat dog shoot dog dog cat cat';
 
-(function(halloween){
-    allHallows=[2013,10,31];
-    console.log(halloween);
-})(allHallows);
+function countAdjacentPairs(searchString) {
+  var arrs = searchString.split(" "),
+      count = 0;
+      
+  arrs.map(function(c,i,a){
+      p=arrs[i+1];
+      if(c===p){
+          count++;
+      }
+      
+  });
+  return count;
+}
 
+console.log(countAdjacentPairs(words));
