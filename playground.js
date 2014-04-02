@@ -1,24 +1,24 @@
-//mapWith
+//extend
 
-function flip(fn){
-  return function(first){
-    return function(second){
-      return fn.call(second,first);
-    };
-  };
+var inventory = {
+  apples:12,
+  oranges:10
 };
 
-var mapWidth = flip()
-function mapWith(fn){
-  return function(list){
-    return Array.prototype.map.call(list, function(something){
-      return fn.call(this, something);
-    });
-  };
-};
+inventory.bananas = 54;
+inventory.pears = 24;
 
-var squareMap = mapWith(function(n){
-  return n*n;
-});
-console.log(squareMap);
-console.log(squareMap([1,2,3,4,5]));
+var jeff = {
+  a:2,
+  b:3
+};
+var tom = {};
+
+console.log(jeff);
+
+for (var letters in jeff){
+  tom[letters]= jeff[letters];
+}
+jeff.b =5;
+console.log(tom);
+console.log(jeff);
