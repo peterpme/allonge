@@ -1,26 +1,24 @@
-// once
+//mapWith
 
-function once(fn){
-  var done = false;
-  
-  return function(){
-    return done ? void 0 : ((done = true), fn.apply(this, arguments));
-  }
-}
+function flip(fn){
+  return function(first){
+    return function(second){
+      return fn.call(second,first);
+    };
+  };
+};
 
-function addThis(num){
-  return num + num;
-}
+var mapWidth = flip()
+function mapWith(fn){
+  return function(list){
+    return Array.prototype.map.call(list, function(something){
+      return fn.call(this, something);
+    });
+  };
+};
 
-var addMe = once(addThis);
-
-
-
-console.log(addMe(4));
-console.log(addMe(4));
-
-var askedOnBlindDate = once(function(){
-  return "sure, why not?";
-})
-
-console.log(askedOnBlindDate());
+var squareMap = mapWith(function(n){
+  return n*n;
+});
+console.log(squareMap);
+console.log(squareMap([1,2,3,4,5]));
