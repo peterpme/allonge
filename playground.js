@@ -1,24 +1,21 @@
-//extend
+// y combinator
 
-var inventory = {
-  apples:12,
-  oranges:10
-};
-
-inventory.bananas = 54;
-inventory.pears = 24;
-
-var jeff = {
-  a:2,
-  b:3
-};
-var tom = {};
-
-console.log(jeff);
-
-for (var letters in jeff){
-  tom[letters]= jeff[letters];
+function Y(f){
+  return ((function(x){
+    return f(function(v){
+      return x(x)(v);
+    });
+  })(function(x){
+    return f(function(v){
+      return x(x)(v);
+    });
+  }));
 }
-jeff.b =5;
-console.log(tom);
-console.log(jeff);
+
+var factorial = Y(function(fac){
+  return function(n){
+    return (n==0 ? 1 : n*fac(n-1));
+  }
+});
+
+console.log(factorial(5));
