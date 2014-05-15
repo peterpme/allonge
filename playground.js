@@ -14,3 +14,14 @@ function memoized (fn, keymaker){
     )
   }
 }
+
+var fastFibonacci = memoized(function(n){
+  if (n<2){
+    return n;
+  }
+  else {
+    return fastFibonacci(n-2) + fastFibonacci(n-1)
+  }
+});
+
+console.log(fastFibonacci(45));
