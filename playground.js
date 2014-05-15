@@ -1,27 +1,15 @@
-function memoized (fn, keymaker){
-  var lookupTable = {},
-  key;
-  
-  keymaker || (keymaker = function(args){
-    return JSON.stringify(args);
-  })
-  
-  return function() {
-    var key = keymaker.call(this, arguments);
-    
-    return lookupTable[key] || (
-      lookupTable[key] = fn.apply(this,arguments)
-    )
+// function getWith
+
+function getWith(attr){
+  return function(obj){
+    return obj[attr];
   }
 }
 
-var fastFibonacci = memoized(function(n){
-  if (n<2){
-    return n;
-  }
-  else {
-    return fastFibonacci(n-2) + fastFibonacci(n-1)
-  }
-});
+var inventory = {
+  apples:0,
+  oranges: 144,
+  eggs:36
+};
 
-console.log(fastFibonacci(45));
+console.log(getWith('oranges')(inventory));
