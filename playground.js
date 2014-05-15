@@ -1,21 +1,16 @@
-// y combinator
-
-function Y(f){
-  return ((function(x){
-    return f(function(v){
-      return x(x)(v);
-    });
-  })(function(x){
-    return f(function(v){
-      return x(x)(v);
-    });
-  }));
-}
-
-var factorial = Y(function(fac){
-  return function(n){
-    return (n==0 ? 1 : n*fac(n-1));
+function memoized (fn, keymaker){
+  var lookupTable = {},
+  key;
+  
+  keymaker || (keymaker = function(args){
+    return JSON.stringify(args);
+  })
+  
+  return function() {
+    var key = keymaker.call(this, arguments);
+    
+    return lookupTable[key] || (
+      lookupTable[key] = fn.apply(this,arguments)
+    )
   }
-});
-
-console.log(factorial(5));
+}
