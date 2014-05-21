@@ -1,28 +1,26 @@
-var Ur = function(){};
-console.log((function() {}).prototype=== (function() {}).prototype);
+var Queue = function() {
+  extend(this, {
+    array: [],
+    head: 0,
+    tail: -1
+  })
+};
 
-Ur.prototype.language="Javascript";
-
-var continent = new Ur();
-console.log(continent.language);
-
-continent.language = "CoffeeScript";
-console.log(continent);
-console.log(continent.language);
-console.log(Ur.prototype.language);
-
-// New instances don't acquire any changes made to other instances.
-
-var another = new Ur();
-
-console.log(another.language);
-
-Ur.prototype.language = 'SUmerian';
-
-// change behavior of contructors prototype changes behavior of all instances
-console.log(another.language);
-
-console.log(continent.constructor);
-
-console.log(Ur.prototype.constructor)
-console.log(Ur.prototype.constructor === Ur)
+// extend(Queue.prototype, {
+//   pushTail: function(value){
+//     return this.array[this.tail +=1] = value;
+//   },
+//   pullHead: function() {
+//     var value; 
+    
+//     if(!this.isEmpty()) {
+//       value = this.array[this.head];
+//       this.array[this.head] = void 0;
+//       this.head += 1;
+//       return value
+//     }
+//   },
+//   isEmpty: function() {
+//     return this.tail > this.head;
+//   }
+// })
