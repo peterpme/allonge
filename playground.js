@@ -1,26 +1,27 @@
-var Queue = function() {
-  extend(this, {
-    array: [],
-    head: 0,
-    tail: -1
-  })
-};
+var Ur = function() {};
 
-// extend(Queue.prototype, {
-//   pushTail: function(value){
-//     return this.array[this.tail +=1] = value;
-//   },
-//   pullHead: function() {
-//     var value; 
-    
-//     if(!this.isEmpty()) {
-//       value = this.array[this.head];
-//       this.array[this.head] = void 0;
-//       this.head += 1;
-//       return value
-//     }
-//   },
-//   isEmpty: function() {
-//     return this.tail > this.head;
-//   }
-// })
+new Ur();
+
+console.log(new Ur() === new Ur());
+
+console.log(Ur.prototype);
+
+Ur.prototype.language = "javascript";
+
+var continent = new Ur();
+console.log(continent.language);
+
+continent.language = "Coffeescript";
+console.log(continent);
+
+var another = new Ur();
+
+// new instances don't acquire changes made to othe rinstances
+
+console.log(another.language);
+
+// changes made to constructors prototype changes behavior of all its instances.
+
+console.log(continent.constructor);
+
+console.log(continent.constructor === Ur)

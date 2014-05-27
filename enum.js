@@ -58,5 +58,5 @@ function encode(list,testCase){
  
 }
 
-console.log(decode(faces,eNumArray));
-console.log(encode(numbers,eNumArray));
+// console.log(decode(faces,eNumArray));
+// console.log(encode(numbers,eNumArray));
