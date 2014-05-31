@@ -1,3 +1,8 @@
-console.log(3.123412311.toPrecision(5));
+// primitiveType(...) creates original primitive from a primitive or instance of primitive object
+console.log(String(new String("Space"))=== "Space");
 
-console.log('FORTRON,SNOBOL,LISP,BASIC'.split(',').length);
+var original = function(unknown){
+  return unknown.constructor(unknown);
+}
+console.log(original(true)===true);
+console.log(original(new Boolean(true))===true);
