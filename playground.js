@@ -1,29 +1,14 @@
-var unbind = function unbind (fn) {
-  return fn.unbound ? unbind(fn.unbound()) : fn
+function User(name, password) {
+  this.name = name || "untitled";
+  this.password = password;
 };
-function bind (fn, context, force) {
-  var unbound,bound;
-  
-  if (force) {
-    fn = unbind(fn);
-  }
-  bound = function() {
-    return fn.apply(context, arguments)
-  };
-  bound.unbound = function() {
-    return fn;
-  };
-  
-  return bound;
+
+function withDefaultPassword() {
+  var args = Array.prototype.call(arguments, 0);
+  args[1] = 'swordfish';
+  return new User.apply(this, args);
 }
 
-function myName() {
-  return this.name;
-}
+var jeff = new User('tom', 'erickson');
 
-var harpo = { name: 'harpo'},
-chico = { name: 'chicao'},
-groucho = { name: 'groucho'};
-
-var fh = bind(myName, harpo);
-console.log(fh());
+console.log(jeff);
